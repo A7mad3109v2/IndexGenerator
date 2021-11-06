@@ -1,0 +1,11 @@
+{
+  "cosmetics": [
+    {
+      "texture": "cosmetics/solartweaks/mantle/1gg.webp",
+      "name": "1GG Mantle Test",
+      "category": "cape",
+      "animated": false,
+      "subCategory": "cloaks"
+    }
+  ]
+}

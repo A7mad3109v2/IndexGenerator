@@ -1,0 +1,25 @@
+{
+  "name": "indexgenerator",
+  "version": "1.0.0",
+  "description": "NodeJS tool to easily generate index.txt file for Lunar Client (Cosmetics)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Solar-Tweaks/IndexGenerator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Solar-Tweaks/IndexGenerator/issues"
+  },
+  "homepage": "https://github.com/Solar-Tweaks/IndexGenerator#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
