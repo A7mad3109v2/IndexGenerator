@@ -21,7 +21,6 @@ class Cosmetic {
 }
 
 const { cosmetics } = require('./cosmetics.json');
-const startIndex = 10001;
 
 console.log('Reading original.txt...');
 let newIndexes = fs.readFileSync(
@@ -30,20 +29,24 @@ let newIndexes = fs.readFileSync(
 );
 console.log('Content read');
 
+const startIndex = newIndexes.split('\n').length;
+const assetsList = [];
+
 console.log('Adding custom cosmetics...');
 cosmetics.forEach((rawCosmetic, index) => {
   const cosmetic = new Cosmetic(rawCosmetic);
   const cosmeticId = startIndex + index;
   const cosmeticString = `${cosmeticId},${cosmetic.scale},${cosmetic.texture},${cosmetic.name},${cosmetic.category},${cosmetic.animated},${cosmetic.subCategory},NONE,${cosmetic.texture}`;
-  newIndexes += cosmeticString;
+  newIndexes += cosmetic.texture;
+  assetsList.push(cosmetic.texture);
   console.log(`Cosmetic ${cosmeticId} added!`);
 });
 console.log('All cosmetics added');
 
 console.log('Writing output...');
 fs.writeFileSync(
-  path.join(__dirname, 'indexes', 'output.txt'),
-  newIndexes,
+  path.join(__dirname, 'indexes', 'output.json'),
+  JSON.stringify({ index: newIndexes, assetsList }, null, 2),
   'utf8'
 );
 console.log('Output wrote!');
