@@ -29,7 +29,9 @@ let newIndexes = fs.readFileSync(
 );
 console.log('Content read');
 
-const startIndex = newIndexes.split('\n').length;
+const lastLine = newIndexes.split('\r\n')[newIndexes.split('\r\n').length - 2];
+let startIndex = lastLine[0] + lastLine[1] + lastLine[2] + lastLine[3];
+startIndex++;
 const assetsList = [];
 
 console.log('Adding custom cosmetics...');
@@ -37,7 +39,7 @@ cosmetics.forEach((rawCosmetic, index) => {
   const cosmetic = new Cosmetic(rawCosmetic);
   const cosmeticId = startIndex + index;
   const cosmeticString = `${cosmeticId},${cosmetic.scale},${cosmetic.texture},${cosmetic.name},${cosmetic.category},${cosmetic.animated},${cosmetic.subCategory},NONE,${cosmetic.texture}`;
-  newIndexes += cosmetic.texture;
+  newIndexes += cosmeticString;
   assetsList.push(cosmetic.texture);
   console.log(`Cosmetic ${cosmeticId} added!`);
 });
